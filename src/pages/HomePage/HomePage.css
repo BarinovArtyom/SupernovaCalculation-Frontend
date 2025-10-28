@@ -1,0 +1,82 @@
+.home-page {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    height: 100vh; /* Заменил min-height на height */
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.main-container {
+    position: relative;
+    height: 100vh; /* Заменил min-height на height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.home-body {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #FFFFFF;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0; /* Добавил обнуление margin */
+}
+
+.home-title {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.home-desc {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+    color: #E8E8E8;
+}
+
+.btn-continue {
+    background-color: #1A408A;
+    color: #FFFFFF;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-continue:hover {
+    background-color: #2D5BB2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.home-bg-fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 64, 138, 0.8);
+    z-index: 1;
+}
+
+/* Глобальные стили */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Полностью убираем скролл */
+    height: 100%;
+}
