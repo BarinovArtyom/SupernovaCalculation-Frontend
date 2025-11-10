@@ -1,0 +1,78 @@
+.scope-page {
+    font-family: 'Inter', sans-serif;
+    background-color: #D9D9D9;
+    margin: 0;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.details-card {
+    width: 1320px;
+    height: auto;
+    padding: 22px;
+    background-color: #1A408A;
+    border-radius: 25px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    color: #D9D9D9;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 50px auto;
+}
+
+.scope-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+}
+
+.scope-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.scope-info {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 24px;
+}
+
+.scope-image {
+    width: 500px;
+    height: 380px;
+    background-color: #D9D9D9;
+    border-radius: 15px;
+    flex-shrink: 0;
+    margin-left: 30px;
+    object-fit: cover;
+}
+
+.scope-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.order-button {
+    padding: 7.5px 18.75px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 7.5px;
+    font-size: 14px;
+    border: none;
+    background-color: #1A408A;
+    color: #D9D9D9;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+}
+
+.loading, .not-found {
+    text-align: center;
+    font-size: 20px;
+    color: #1A408A;
+    margin-top: 50px;
+    font-weight: bold;
+}
