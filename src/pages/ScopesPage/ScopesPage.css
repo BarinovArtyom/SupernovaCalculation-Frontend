@@ -1,0 +1,120 @@
+.scopes-page {
+    font-family: 'Inter', sans-serif;
+    background-color: #D9D9D9;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.search-section {
+    display: flex;
+    justify-content: center; 
+}
+
+.field-search-text {
+    width: 975px; 
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    background-color: #1A408A;
+    color: #D9D9D9;
+    font-size: 14px;
+}
+
+.scope-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.scope-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.cart-icon-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+.cart-icon {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: #1A408A;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+.cart-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #ababab;
+    color: #1A408A;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cart-icon-container.cart-disabled .cart-icon {
+    background-color: #6b6b6b;
+    opacity: 0.7;
+}
+
+.cart-icon-container.cart-disabled .cart-badge {
+    background-color: #8d8d8d;
+    color: #4a4a4a;
+}
+
+.search-info {
+    background-color: #f8f9fa;
+    border-left: 4px solid #007bff;
+    padding: 12px 16px;
+    margin: 16px 0;
+    border-radius: 4px;
+    display: flex;
+    justify-content: between;
+    align-items: center;
+}
+
+.search-info p {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.clear-search {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.clear-search:hover {
+    background-color: #5a6268;
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px 20px;
+    color: #6c757d;
+}
+
+.no-results p {
+    margin-bottom: 16px;
+    font-size: 18px;
+}
