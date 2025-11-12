@@ -16,7 +16,7 @@ const ScopePage: React.FC = () => {
     const fetchScope = async () => {
         try {
             const response = await fetch(`/api/scope/${id}`);
-            
+
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
             const data = await response.json();
@@ -86,7 +86,7 @@ const ScopePage: React.FC = () => {
     return (
         <div className="scope-page">
             <Header />
-            
+
             <BreadCrumbs crumbs={[
                 { label: ROUTE_LABELS["/scopes"], path: ROUTES.SCOPES },
                 { label: scope.name }
@@ -100,19 +100,10 @@ const ScopePage: React.FC = () => {
                     <div className="scope-info">Ширина полосы пропускания: {scope.delta_lamb} Å</div>
                     <div className="scope-info">Константа нулевой точки: {scope.zero_point}</div>
                     <div className="scope-description">{scope.description}</div>
-                    
-                    <div className="scope-buttons">
-                        <button 
-                            className="order-button"
-                            onClick={() => window.history.back()}
-                        >
-                            Назад к списку
-                        </button>
-                    </div>
                 </div>
-                <img 
-                    className="scope-image" 
-                    src={scope.img_link || image} 
+                <img
+                    className="scope-image"
+                    src={scope.img_link || image}
                     alt={scope.name}
                 />
             </div>

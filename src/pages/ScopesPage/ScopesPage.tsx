@@ -8,12 +8,12 @@ import { ROUTES, ROUTE_LABELS } from "../../Routes";
 import { type Scope } from "../../modules/models";
 import { mockScopes } from "../../modules/mock";
 import { setSearchQuery } from "../../store/slices/filtersSlice";
-import { 
-    setScopes, 
-    setLoading, 
-    setError, 
-    setStarId, 
-    setCalcCount 
+import {
+    setScopes,
+    setLoading,
+    setError,
+    setStarId,
+    setCalcCount
 } from "../../store/slices/scopesSlice";
 import type { RootState } from "../../store/store";
 import "./ScopesPage.css";
@@ -22,7 +22,7 @@ import image from '../../statics/cart.png'
 const ScopesPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
+
     const searchQuery = useSelector((state: RootState) => state.filters.searchQuery);
     const scopes = useSelector((state: RootState) => state.scopes.scopes);
     const loading = useSelector((state: RootState) => state.scopes.loading);
@@ -39,7 +39,7 @@ const ScopesPage = () => {
             if (!response.ok) {
                 throw new Error('Network response failed');
             }
-            
+
             const result = await response.json();
 
             if (result && result.Scopes && Array.isArray(result.Scopes)) {
@@ -69,7 +69,7 @@ const ScopesPage = () => {
     };
 
     const createMocks = () => {
-        const filteredScopes = mockScopes.filter(scope => 
+        const filteredScopes = mockScopes.filter(scope =>
             scope.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
         dispatch(setScopes(filteredScopes));
@@ -119,7 +119,6 @@ const ScopesPage = () => {
     return (
         <div className="scopes-page">
             <Header />
-            
             <BreadCrumbs crumbs={[
                 { label: ROUTE_LABELS["/scopes"], path: ROUTES.SCOPES }
             ]} />
@@ -145,8 +144,8 @@ const ScopesPage = () => {
             <div className="scope-container">
                 <ul className="scope-list">
                     {scopes.map(scope => (
-                        <ScopeCard 
-                            key={scope.id} 
+                        <ScopeCard
+                            key={scope.id}
                             scope={scope}
                             onDetailsClick={handleDetailsClick}
                             onAddToStar={handleAddToStar}
@@ -158,10 +157,10 @@ const ScopesPage = () => {
 
             <div className={`cart-icon-container ${starId === 0 ? 'cart-disabled' : ''}`}>
                 <a href={starId === 0 ? '#' : `/star/${starId}`}>
-                    <img 
-                        className="cart-icon" 
+                    <img
+                        className="cart-icon"
                         src={image}
-                        alt="Расчеты" 
+                        alt="Расчеты"
                     />
                     {calcCount > 0 && (
                         <div className="cart-badge">{calcCount}</div>

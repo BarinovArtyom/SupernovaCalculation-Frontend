@@ -11,16 +11,16 @@ interface ScopeCardProps {
   disabled?: boolean;
 }
 
-const ScopeCard: React.FC<ScopeCardProps> = ({ scope, onDetailsClick, onAddToStar }) => {
+const ScopeCard: React.FC<ScopeCardProps> = ({ scope, onDetailsClick }) => {
   const handleDetailsClick = (e: React.MouseEvent) => {
     e.preventDefault();
     onDetailsClick(scope.id);
   };
 
-  const handleAddClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    onAddToStar(scope.id);
-  };
+  // const handleAddClick = (e: React.MouseEvent) => {
+  //   e.preventDefault();
+  //   onAddToStar(scope.id);
+  // };
 
   return (
     <li className="scope-item">
@@ -39,13 +39,13 @@ const ScopeCard: React.FC<ScopeCardProps> = ({ scope, onDetailsClick, onAddToSta
               >
                 Подробнее
               </Button>
-              <Button 
+              {/* <Button 
                 className="order-button"
                 onClick={handleAddClick}
                 variant="secondary"
               >
                 Добавить
-              </Button>
+              </Button> */}
             </div>
           </div>
           <Card.Img 

@@ -1,45 +1,69 @@
 .scopes-page {
     font-family: 'Inter', sans-serif;
     background-color: #D9D9D9;
-    margin: 0;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .search-section {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
+    padding: 2rem 0 1rem;
 }
 
 .field-search-text {
-    width: 975px; 
-    padding: 10px 20px;
+    width: 1200px; /* Увеличил ширину с 975px до 1200px */
+    max-width: 95%; /* Увеличил максимальную ширину */
+    padding: 12px 24px;
     border-radius: 25px;
     border: none;
     outline: none;
     background-color: #1A408A;
     color: #D9D9D9;
-    font-size: 14px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.field-search-text:focus {
+    box-shadow: 0 0 0 2px rgba(26, 64, 138, 0.3);
+}
+
+.field-search-text::placeholder {
+    color: #D9D9D9;
+    opacity: 0.8;
 }
 
 .scope-container {
     display: flex;
     justify-content: center;
     margin: 30px 0;
+    flex: 1;
 }
 
 .scope-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 24px;
     padding: 0;
     margin: 0;
     list-style: none;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.loading-indicator {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.1rem;
+    color: #1A408A;
 }
 
 .cart-icon-container {
     position: fixed;
     bottom: 20px;
     left: 20px;
+    z-index: 1000;
 }
 
 .cart-icon {
@@ -47,22 +71,28 @@
     height: 75px;
     border-radius: 50%;
     background-color: #1A408A;
-    padding: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     position: relative;
+    transition: all 0.3s ease;
+}
+
+.cart-icon:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .cart-badge {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 20px;
-    height: 20px;
+    bottom: 1px;
+    right: 1px;
+    width: 24px;
+    height: 24px;
     background-color: #ababab;
     color: #1A408A;
     border-radius: 50%;
     text-align: center;
-    line-height: 20px;
+    line-height: 24px;
     font-size: 12px;
     font-weight: bold;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
@@ -71,6 +101,8 @@
 .cart-icon-container.cart-disabled .cart-icon {
     background-color: #6b6b6b;
     opacity: 0.7;
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .cart-icon-container.cart-disabled .cart-badge {
@@ -85,7 +117,7 @@
     margin: 16px 0;
     border-radius: 4px;
     display: flex;
-    justify-content: between;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -102,6 +134,7 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
+    transition: background-color 0.2s ease;
 }
 
 .clear-search:hover {
@@ -110,11 +143,122 @@
 
 .no-results {
     text-align: center;
-    padding: 40px 20px;
+    padding: 3rem 1rem;
     color: #6c757d;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .no-results p {
     margin-bottom: 16px;
-    font-size: 18px;
+    font-size: 1.125rem;
+}
+
+@media (max-width: 991px) {
+    .search-section {
+        padding: 1.5rem 0 0.75rem;
+    }
+    
+    .field-search-text {
+        width: 100%; /* Увеличил ширину на планшетах */
+        max-width: 100%; /* Увеличил максимальную ширину */
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+    
+    .scope-container {
+        margin: 20px 0;
+    }
+    
+    .scope-list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 600px;
+    }
+    
+    .cart-icon {
+        width: 65px;
+        height: 65px;
+        padding: 14px;
+    }
+    
+    .cart-badge {
+        width: 22px;
+        height: 22px;
+        line-height: 22px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-section {
+        padding: 1rem 0 0.5rem;
+    }
+    
+    .field-search-text {
+        width: 100%; /* Еще шире на мобильных */
+        max-width: 100%; /* Еще шире на мобильных */
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    .scope-container {
+        margin: 15px 0;
+    }
+    
+    .scope-list {
+        gap: 16px;
+    }
+    
+    .cart-icon-container {
+        bottom: 15px;
+        left: 15px;
+    }
+    
+    .cart-icon {
+        width: 60px;
+        height: 60px;
+        padding: 12px;
+    }
+    
+    .cart-badge {
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        font-size: 10px;
+        bottom: 6px;
+        right: 6px;
+    }
+    
+    .loading-indicator {
+        padding: 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .no-results {
+        padding: 2rem 1rem;
+    }
+    
+    .no-results p {
+        font-size: 1rem;
+    }
+
+    .scope-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .scope-list {
+        gap: 0.875rem;
+    }
+    
+    .field-search-text {
+        width: 100%; 
+        max-width: 100%;
+    }
 }

@@ -5,7 +5,6 @@ import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
 import { ROUTE_LABELS } from '../../Routes';
 import "./HomePage.css";
 
-// Импортируем изображения
 import carousel1 from '../../statics/carousel1.jpg';
 import carousel2 from '../../statics/carousel2.jpg';
 import carousel3 from '../../statics/carousel3.jpg';
@@ -37,22 +36,30 @@ const HomePage: React.FC = () => {
     return (
         <div className="home-page">
             <Header />
-            
+
             <BreadCrumbs crumbs={[
                 { label: ROUTE_LABELS["/"] }
             ]} />
 
             <main className="main-container">
                 <div className="home-body">
-                    <Carousel fade className="home-carousel">
+                    <Carousel
+                        fade
+                        className="home-carousel"
+                        indicators={true}
+                        controls={true}
+                        interval={5000}
+                    >
                         {carouselItems.map((item, index) => (
-                            <Carousel.Item key={index} interval={5000}>
-                                <img
-                                    className="d-block w-100 carousel-image"
-                                    src={item.image}
-                                    alt={item.title}
-                                    onError={handleImageError}
-                                />
+                            <Carousel.Item key={index}>
+                                <div className="carousel-image-container">
+                                    <img
+                                        className="carousel-image"
+                                        src={item.image}
+                                        alt={item.title}
+                                        onError={handleImageError}
+                                    />
+                                </div>
                                 <Carousel.Caption className="carousel-caption-custom">
                                     <h3>{item.title}</h3>
                                     <p>{item.description}</p>
