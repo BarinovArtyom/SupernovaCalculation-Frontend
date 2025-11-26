@@ -1,0 +1,129 @@
+.profile-page {
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 30px;
+    font-family: 'Inter', sans-serif;
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.profile-page h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1A408A;
+    font-weight: bold;
+}
+
+.user-info {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    border-left: 4px solid #1A408A;
+}
+
+.user-info p {
+    margin: 8px 0;
+    color: #333;
+    font-size: 14px;
+}
+
+.user-info strong {
+    color: #1A408A;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1A408A;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 2px solid #1A408A;
+    border-radius: 25px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    color: #000000; /* Добавлен цвет текста */
+}
+
+.form-group input:focus {
+    border-color: #2c5cc5;
+    box-shadow: 0 0 0 2px rgba(26, 64, 138, 0.2);
+    outline: none;
+    color: #000000; /* Цвет текста при фокусе */
+}
+
+.form-group input::placeholder {
+    color: #A5A5A5;
+    font-weight: normal;
+}
+
+/* Стили для текста внутри input */
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    color: #000000; /* Черный цвет текста */
+}
+
+.submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #1A408A;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.submit-button:hover {
+    background-color: #2c5cc5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 64, 138, 0.3);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+.error-message {
+    color: #C62828;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 12px 20px;
+    background-color: #f9dcdc;
+    border: 1px solid #C62828;
+    border-radius: 8px;
+}
+
+.success-message {
+    color: #28a745;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 12px 20px;
+    background-color: #d4edda;
+    border: 1px solid #28a745;
+    border-radius: 8px;
+}
+
+.body {
+    background-color: #D9D9D9;
+    min-height: calc(100vh - var(--header-height));
+    padding: 20px;
+}
