@@ -14,6 +14,8 @@ import {
   setStarData, 
   updateStarData 
 } from '../../store/slices/CalculationsDraft';
+import { api } from '../../api';
+import { returnHeaderConfig } from '../../store/slices/userSlice'; // Добавляем импорт
 import "./StarPage.css";
 import type { Scope } from '../../modules/models';
 
@@ -56,6 +58,60 @@ const StarPage: FC = () => {
   const handleAddToStar = (id: number) => {
     console.log('Add to star:', id);
   };
+
+  // В функции handleSaveCalc в StarPage.tsx:
+const handleSaveCalc = async (scopeId: number, calcData: { inp_mass: number; inp_texp: number; inp_dist: number }) => {
+  if (!star_id) {
+    console.error('Ошибка: отсутствует star_id');
+    return;
+  }
+  
+  try {
+    console.log('Начинаем сохранение расчета...');
+    
+    // Получаем конфиг с заголовками авторизации
+    const authConfig = returnHeaderConfig();
+    
+    // Используем строчные имена полей, как указано в JSON тегах
+    const requestData = {
+      inp_mass: calcData.inp_mass,    // ← строчное!
+      inp_texp: calcData.inp_texp,    // ← строчное!
+      inp_dist: calcData.inp_dist     // ← строчное!
+    };
+    
+    console.log('Отправляемые данные на бэкенд:', requestData);
+    
+    const response = await api.calc.editUpdate(
+      star_id, 
+      scopeId.toString(), 
+      requestData as any,  // as any чтобы обойти проверку типов TypeScript
+      authConfig
+    );
+    
+    console.log('Ответ от сервера:', response.data);
+    console.log('Расчет успешно сохранен');
+    
+    // Обновляем данные звезды после сохранения
+    dispatch(getStar(star_id));
+    
+    return response.data;
+  } catch (error: any) {
+    console.error('Полная ошибка при сохранении расчета:', error);
+    
+    if (error.response) {
+      console.error('Статус ошибки:', error.response.status);
+      console.error('Данные ошибки:', error.response.data);
+      
+      if (error.response.status === 400) {
+        dispatch(setError(`Ошибка валидации: ${JSON.stringify(error.response.data)}`));
+      } else {
+        dispatch(setError(`Ошибка сервера: ${error.response.status}`));
+      }
+    }
+    
+    throw error;
+  }
+};
 
   const handleDelete = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -180,6 +236,7 @@ const StarPage: FC = () => {
                     calc={calc}
                     onDetailsClick={handleDetailsClick}
                     onAddToStar={handleAddToStar}
+                    onSaveCalc={handleSaveCalc}
                     count={count}
                     isDraft={isDraft}
                   />

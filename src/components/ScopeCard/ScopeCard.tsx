@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
 import './ScopeCard.css';
@@ -19,6 +19,7 @@ interface ScopeCardProps {
   calc?: Calc;
   onDetailsClick: (id: number) => void;
   onAddToStar: (id: number) => void;
+  onSaveCalc?: (scopeId: number, calcData: { inp_mass: number; inp_texp: number; inp_dist: number }) => void;
   disabled?: boolean;
   count?: number;
   isDraft?: boolean;
@@ -29,6 +30,7 @@ const ScopeCard: React.FC<ScopeCardProps> = ({
   calc,
   onDetailsClick, 
   onAddToStar,
+  onSaveCalc,
   disabled,
   count,
   isDraft = false
@@ -39,6 +41,8 @@ const ScopeCard: React.FC<ScopeCardProps> = ({
   const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated);
   const tempCalcValues = useSelector((state: RootState) => state.vacancyApplicationDraft.tempCalcValues);
   const { app_id } = useSelector((state: RootState) => state.vacancyApplicationDraft);
+  
+  const [isSaving, setIsSaving] = useState(false);
 
   const handleAdd = async () => {
     if (scope.id) {
@@ -65,6 +69,55 @@ const ScopeCard: React.FC<ScopeCardProps> = ({
     }
   };
 
+  const handleSaveCalculation = async () => {
+    if (!scope.id || !app_id) {
+      console.error('Ошибка: отсутствует ID услуги или заявки');
+      return;
+    }
+
+    setIsSaving(true);
+
+    try {
+      // Парсим значение из инпута
+      const inputValue = getInputValue();
+      const parts = inputValue.split(' ').filter(part => part.trim() !== '');
+      
+      let calcData = {
+        inp_mass: 0.01,
+        inp_texp: 0.01,
+        inp_dist: 0.01
+      };
+      
+      if (parts.length >= 3) {
+        calcData = {
+          inp_mass: parseFloat(parts[0]) || 0.01,
+          inp_texp: parseFloat(parts[1]) || 0.01,
+          inp_dist: parseFloat(parts[2]) || 0.01
+        };
+      } else if (calc) {
+        // Используем существующие значения из calc
+        calcData = {
+          inp_mass: calc.inp_mass || 0.01,
+          inp_texp: calc.inp_texp || 0.01,
+          inp_dist: calc.inp_dist || 0.01
+        };
+      }
+
+      console.log('Данные для отправки из ScopeCard:', calcData);
+
+      if (onSaveCalc) {
+        await onSaveCalc(scope.id, calcData);
+        console.log('Расчет успешно сохранен');
+      } else {
+        console.warn('Функция onSaveCalc не передана');
+      }
+    } catch (error) {
+      console.error('Ошибка при сохранении расчета:', error);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (scope.id) {
       dispatch(setCalcValue({
@@ -88,46 +141,46 @@ const ScopeCard: React.FC<ScopeCardProps> = ({
     return '';
   };
 
-  if (pathname === "/scopes") {
-    return (
-      <li className="scope-item">
-        <Card className="scope-card">
-          <Card.Body className="scope-card-body">
-            <div className="scope-content">
-              <Card.Title className="scope-title">{scope.name}</Card.Title>
-              <Card.Text className="scope-description">
-                {scope.description}
-              </Card.Text>
-              <div className="scope-buttons">
+if (pathname === "/scopes") {
+  return (
+    <div className="scope-item-wrapper">
+      <Card className="scope-card">
+        <Card.Body className="scope-card-body">
+          <div className="scope-content">
+            <Card.Title className="scope-title">{scope.name}</Card.Title>
+            <Card.Text className="scope-description">
+              {scope.description}
+            </Card.Text>
+            <div className="scope-buttons">
+              <Button 
+                className="details-button"
+                onClick={handleDetailsClick}
+                variant="secondary"
+              >
+                Подробнее
+              </Button>
+              {(isAuthenticated == true) && (
                 <Button 
-                  className="details-button"
-                  onClick={handleDetailsClick}
+                  className="order-button"
+                  onClick={() => handleAdd()}
                   variant="secondary"
+                  disabled={disabled}
                 >
-                  Подробнее
+                  Добавить
                 </Button>
-                {(isAuthenticated == true) && (
-                  <Button 
-                    className="order-button"
-                    onClick={() => handleAdd()}
-                    variant="secondary"
-                    disabled={disabled}
-                  >
-                    Добавить
-                  </Button>
-                )}
-              </div>
+              )}
             </div>
-            <Card.Img 
-              className="scope-image" 
-              src={scope.img_link || image} 
-              alt={scope.name}
-            />
-          </Card.Body>
-        </Card>
-      </li>
-    );
-  }
+          </div>
+          <Card.Img 
+            className="scope-image" 
+            src={scope.img_link || image} 
+            alt={scope.name}
+          />
+        </Card.Body>
+      </Card>
+    </div>
+  );
+}
 
   if (pathname.includes("/star/")) {
     return (
@@ -158,12 +211,21 @@ const ScopeCard: React.FC<ScopeCardProps> = ({
           />
         </div>
         {isDraft && (
-          <button 
-            className="delete-scope-button"
-            onClick={handleDeleteScope}
-          >
-            Удалить
-          </button>
+          <div className="scope-actions-vertical">
+            <button 
+              className="save-calc-button"
+              onClick={handleSaveCalculation}
+              disabled={isSaving}
+            >
+              {isSaving ? 'Сохранение...' : 'Сохранить'}
+            </button>
+            <button 
+              className="delete-scope-button"
+              onClick={handleDeleteScope}
+            >
+              Удалить
+            </button>
+          </div>
         )}
       </div>
     );

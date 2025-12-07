@@ -9,19 +9,34 @@
 .scope-container {
     display: flex;
     justify-content: center;
-    margin: 30px 0;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
     flex: 1;
+    margin: 30px auto; /* Добавь auto */
 }
 
 .scope-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    padding: 0 !important;
+    margin: 0 auto !important; /* Измени это */
+    list-style: none !important;
+}
+
+.scope-list li {
+    display: block;
     width: 100%;
-    max-width: 1200px;
+    height: 100%;
+}
+
+.scope-item {
+    width: calc(50% - 12px); 
+    min-width: 400px;
+    max-width: 580px;
 }
 
 .loading-indicator {
@@ -29,6 +44,7 @@
     padding: 2rem;
     font-size: 1.1rem;
     color: #1A408A;
+    width: 100%;
 }
 
 .scopes-not-found {
@@ -40,6 +56,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .scopes-not-found h1 {
@@ -121,16 +138,20 @@
     transform: none;
 }
 
-
 @media (max-width: 991px) {
     .scope-container {
         margin: 20px 0;
     }
     
     .scope-list {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        max-width: 600px;
+        grid-template-columns: repeat(2, 1fr) !important;
+        max-width: 800px !important;
+        gap: 20px !important;
+    }
+    
+    .scope-item {
+        min-width: 350px;
+        max-width: 450px;
     }
     
     .cart-icon {
@@ -150,10 +171,19 @@
 @media (max-width: 768px) {
     .scope-container {
         margin: 15px 0;
+        padding: 0 15px;
     }
     
     .scope-list {
-        gap: 16px;
+        grid-template-columns: 1fr !important;
+        max-width: 500px !important;
+        gap: 16px !important;
+    }
+    
+    .scope-item {
+        min-width: auto;
+        max-width: 100%;
+        width: 100%;
     }
     
     .cart-icon-container {
@@ -191,7 +221,45 @@
 }
 
 @media (max-width: 480px) {
+    .scope-container {
+        padding: 0 10px;
+        margin: 10px 0;
+    }
+    
     .scope-list {
-        gap: 0.875rem;
+        gap: 12px !important;
+    }
+    
+    .cart-icon-container {
+        bottom: 10px;
+        left: 10px;
+    }
+    
+    .cart-icon {
+        width: 55px;
+        height: 55px;
+        padding: 10px;
+    }
+    
+    .cart-badge {
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        font-size: 9px;
+        bottom: 5px;
+        right: 5px;
+    }
+    
+    .loading-indicator {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .scopes-not-found {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .scopes-not-found h1 {
+        font-size: 0.9rem;
     }
 }

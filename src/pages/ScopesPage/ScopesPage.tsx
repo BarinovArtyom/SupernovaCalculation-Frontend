@@ -75,16 +75,17 @@ const ScopesPage = () => {
                     </section>
                 ) : (
                     <ul className="scope-list">
-                        {scopes.map((scope: Scope) => (
-                            <ScopeCard
-                                key={scope.id}
-                                scope={scope}
-                                onDetailsClick={handleDetailsClick}
-                                onAddToStar={handleAddToStar}
-                                disabled={loading}
-                            />
-                        ))}
-                    </ul>
+  {scopes.map((scope: Scope) => (
+    <li key={scope.id} className="scope-item">
+      <ScopeCard
+        scope={scope}
+        onDetailsClick={handleDetailsClick}
+        onAddToStar={handleAddToStar}
+        disabled={loading}
+      />
+    </li>
+  ))}
+</ul>
                 )}
             </div>
 
