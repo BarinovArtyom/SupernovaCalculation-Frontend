@@ -1,0 +1,125 @@
+.search-bar {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 1rem;
+}
+
+.search-input {
+    position: relative;
+    width: 1200px;
+    max-width: 95%;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 24px;
+    width: 20px;
+    height: 20px;
+    z-index: 2;
+}
+
+.inp-text {
+    width: 100%;
+    padding: 12px 24px 12px 60px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    background-color: #1A408A;
+    color: #D9D9D9;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.inp-text:focus {
+    box-shadow: 0 0 0 2px rgba(26, 64, 138, 0.3);
+}
+
+.inp-text::placeholder {
+    color: #D9D9D9;
+    opacity: 0.8;
+}
+
+.inp-text:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.search-button {
+    position: absolute;
+    right: 8px;
+    padding: 8px 20px;
+    background-color: #D9D9D9;
+    color: #1A408A;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.search-button:hover:not(:disabled) {
+    background-color: #c4c4c4;
+    transform: translateY(-1px);
+}
+
+.search-button:disabled {
+    background-color: #8d8d8d;
+    color: #6b6b6b;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@media (max-width: 991px) {
+    .search-bar {
+        padding: 1.5rem 0 0.75rem;
+    }
+    
+    .search-input {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .inp-text {
+        padding: 10px 20px 10px 50px;
+        font-size: 15px;
+    }
+    
+    .search-icon {
+        left: 20px;
+        width: 18px;
+        height: 18px;
+    }
+    
+    .search-button {
+        padding: 7px 16px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-bar {
+        padding: 1rem 0 0.5rem;
+    }
+    
+    .inp-text {
+        padding: 8px 16px 8px 45px;
+        font-size: 14px;
+    }
+    
+    .search-icon {
+        left: 16px;
+        width: 16px;
+        height: 16px;
+    }
+    
+    .search-button {
+        padding: 6px 14px;
+        font-size: 12px;
+        right: 6px;
+    }
+}

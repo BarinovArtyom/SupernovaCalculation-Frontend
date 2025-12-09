@@ -1,0 +1,265 @@
+.scopes-page {
+    font-family: 'Inter', sans-serif;
+    background-color: #D9D9D9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.scope-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    flex: 1;
+    margin: 30px auto; /* Добавь auto */
+}
+
+.scope-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    padding: 0 !important;
+    margin: 0 auto !important; /* Измени это */
+    list-style: none !important;
+}
+
+.scope-list li {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.scope-item {
+    width: calc(50% - 12px); 
+    min-width: 400px;
+    max-width: 580px;
+}
+
+.loading-indicator {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.1rem;
+    color: #1A408A;
+    width: 100%;
+}
+
+.scopes-not-found {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #6c757d;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.scopes-not-found h1 {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: normal;
+}
+
+.cart-icon-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.cart-icon {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: #1A408A;
+    padding: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.cart-icon:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cart-badge {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    width: 24px;
+    height: 24px;
+    background-color: #ababab;
+    color: #1A408A;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cart-icon-container.cart-disabled .cart-icon {
+    background-color: #6b6b6b;
+    opacity: 0.7;
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-icon-container.cart-disabled .cart-badge {
+    background-color: #8d8d8d;
+    color: #4a4a4a;
+}
+
+.cart-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.cart-button:hover:not(:disabled) {
+    transform: scale(1.05);
+}
+
+.cart-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.cart-icon-container.cart-disabled .cart-button:hover {
+    transform: none;
+}
+
+@media (max-width: 991px) {
+    .scope-container {
+        margin: 20px 0;
+    }
+    
+    .scope-list {
+        grid-template-columns: repeat(2, 1fr) !important;
+        max-width: 800px !important;
+        gap: 20px !important;
+    }
+    
+    .scope-item {
+        min-width: 350px;
+        max-width: 450px;
+    }
+    
+    .cart-icon {
+        width: 65px;
+        height: 65px;
+        padding: 14px;
+    }
+    
+    .cart-badge {
+        width: 22px;
+        height: 22px;
+        line-height: 22px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 768px) {
+    .scope-container {
+        margin: 15px 0;
+        padding: 0 15px;
+    }
+    
+    .scope-list {
+        grid-template-columns: 1fr !important;
+        max-width: 500px !important;
+        gap: 16px !important;
+    }
+    
+    .scope-item {
+        min-width: auto;
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .cart-icon-container {
+        bottom: 15px;
+        left: 15px;
+    }
+    
+    .cart-icon {
+        width: 60px;
+        height: 60px;
+        padding: 12px;
+    }
+    
+    .cart-badge {
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        font-size: 10px;
+        bottom: 6px;
+        right: 6px;
+    }
+    
+    .loading-indicator {
+        padding: 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .scopes-not-found {
+        padding: 2rem 1rem;
+    }
+    
+    .scopes-not-found h1 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .scope-container {
+        padding: 0 10px;
+        margin: 10px 0;
+    }
+    
+    .scope-list {
+        gap: 12px !important;
+    }
+    
+    .cart-icon-container {
+        bottom: 10px;
+        left: 10px;
+    }
+    
+    .cart-icon {
+        width: 55px;
+        height: 55px;
+        padding: 10px;
+    }
+    
+    .cart-badge {
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        font-size: 9px;
+        bottom: 5px;
+        right: 5px;
+    }
+    
+    .loading-indicator {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .scopes-not-found {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .scopes-not-found h1 {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,251 @@
+.star-page {
+    font-family: 'Inter', sans-serif;
+    background-color: #D9D9D9;
+    margin: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.star-inf {
+    display: flex;
+    width: 100%;
+    gap: 25px;
+    margin-top: 25px;
+    margin-left: 100px; 
+    align-items: center;
+}
+
+.star-info-display {
+    display: flex;
+    gap: 25px;
+}
+
+.star-name, .star-cons {
+    padding: 7.5px 18.75px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 25px;
+    font-size: 14px;
+    border: none;
+    background-color: #1A408A;
+    color: #D9D9D9;
+}
+
+.star-edit-form {
+    display: flex;
+    gap: 25px;
+    align-items: flex-end;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #1A408A;
+    margin: 0;
+}
+
+.form-control.star-input {
+    padding: 7.5px 18.75px;
+    border: 2px solid #1A408A;
+    border-radius: 25px;
+    background-color: #FFFFFF;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 250px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-control.star-input:focus {
+    border-color: #2c5cc5;
+    box-shadow: 0 0 0 2px rgba(26, 64, 138, 0.2);
+}
+
+.form-control.star-input::placeholder {
+    color: #A5A5A5;
+    font-weight: normal;
+}
+
+.save-data-button {
+    padding: 7.5px 18.75px;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #1A408A;
+    color: #FFFFFF;
+    height: fit-content;
+    white-space: nowrap;
+}
+
+.save-data-button:hover {
+    background-color: #2c5cc5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 64, 138, 0.3);
+}
+
+.save-data-button:active {
+    transform: translateY(0);
+}
+
+.scope-container {
+    display: flex;
+    align-items: flex-start;
+    margin: 30px 0;
+}
+
+.scope-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 100%;
+}
+
+.scope-item {
+    display: flex;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.scope-card {
+    width: 100%;
+    padding: 22px;
+    background-color: #1A408A;
+    border-radius: 25px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.scope-content {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.scope-image {
+    width: 150px;
+    height: 120px;
+    background-color: #D9D9D9;
+    border-radius: 15px;
+    flex-shrink: 0;
+    margin-right: 30px;
+    object-fit: cover;
+}
+
+.scope-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+}
+
+.inputs-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.val-inp, .res-inp {
+    padding: 10px 15px;
+    border: 1px solid #1A408A;
+    border-radius: 25px;
+    background-color: #A5A5A5;
+    color: #000000;
+    width: 200px;
+    font-size: 14px;
+    height: 85px;
+    flex-shrink: 0;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 40px 0;
+    padding: 0 20px;
+}
+
+.delete-form {
+    margin: 0;
+}
+
+.action-button {
+    padding: 12px 35px;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 180px;
+    text-align: center;
+}
+
+.delete-button {
+    background-color: #C62828;
+    color: #FFFFFF;
+}
+
+.delete-button:hover {
+    background-color: #B71C1C;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(198, 40, 40, 0.3);
+}
+
+.save-button {
+    background-color: #28a745;
+    color: #FFFFFF;
+}
+
+.save-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.action-button:active {
+    transform: translateY(0);
+}
+
+.scopes-not-found {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #6c757d;
+}
+
+.scopes-not-found h1 {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: normal;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin: 20px 100px;
+}
